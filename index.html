@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casio Calculator</title>
+<style>
+    .calculator {
+        width: 300px;
+        margin: 50px auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    input[type="button"] {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        font-size: 20px;
+        border-radius: 5px;
+    }
+    .m{
+        width: 300px;
+        height: 40px;
+        font-size: 20px;
+        color: black;
+    }
+</style>
+</head>
+<body>
+<div class="calculator">
+    <input class="m" type="text" id="display" disabled>
+    <br>
+    <input type="button" value="1" onclick="addToDisplay('1')">
+    <input type="button" value="2" onclick="addToDisplay('2')">
+    <input type="button" value="3" onclick="addToDisplay('3')">
+    <input type="button" value="4" onclick="addToDisplay('4')">
+    <input type="button" value="5" onclick="addToDisplay('5')">
+    <input type="button" value="6" onclick="addToDisplay('6')">
+    <input type="button" value="7" onclick="addToDisplay('7')">
+    <input type="button" value="8" onclick="addToDisplay('8')">
+    <input type="button" value="9" onclick="addToDisplay('9')">
+    <input type="button" value="0" onclick="addToDisplay('0')">
+    <input type="button" value="/" onclick="addToDisplay('/')">
+    <input type="button" value="∞" onclick="appendToDisplay('Infinity')">
+    <input type="button" value="-" onclick="addToDisplay('-')">
+    <input type="button" value="." onclick="addToDisplay('.')">
+    <input type="button" value="=" onclick="calculate()">
+    <input type="button" value="+" onclick="addToDisplay('+')">
+    <input type="button" value="*" onclick="addToDisplay('*')">
+    <input type="button" value="C" onclick="clearDisplay()">
+    <input type="button" value="√" onclick="squareRoot()">
+    <input type="button" value="%" onclick="percentage()">
+    <input type="button" value="1/x" onclick="inverse()">
+    <input type="button" value="x²" onclick="squared()">
+    <input type="button" value="x³" onclick="cubed()">
+    <input type="button" value="xʸ" onclick="power()">
+    <input type="button" value="eˣ" onclick="exponential()">
+    <input type="button" value="ln" onclick="naturalLog()">
+    <input type="button" value="log" onclick="log()">
+    <input type="button" value="π" onclick="pi()">
+    <input type="button" value="e" onclick="e()">
+</div>
+<script>
+    function addToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+        try {
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        } catch (e) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+
+    function squareRoot() {
+        document.getElementById('display').value = Math.sqrt(eval(document.getElementById('display').value));
+    }
+
+    function percentage() {
+        document.getElementById('display').value = eval(document.getElementById('display').value) / 100;
+    }
+
+    function inverse() {
+        document.getElementById('display').value = 1 / eval(document.getElementById('display').value);
+    }
+
+    function squared() {
+        document.getElementById('display').value = Math.pow(eval(document.getElementById('display').value), 2);
+    }
+
+    function cubed() {
+        document.getElementById('display').value = Math.pow(eval(document.getElementById('display').value), 3);
+    }
+
+    function power() {
+        document.getElementById('display').value += '^';
+    }
+
+    function exponential() {
+        document.getElementById('display').value = Math.exp(eval(document.getElementById('display').value));
+    }
+
+    function naturalLog() {
+        document.getElementById('display').value = Math.log(eval(document.getElementById('display').value));
+    }
+
+    function log() {
+        document.getElementById('display').value = Math.log10(eval(document.getElementById('display').value));
+    }
+
+    function pi() {
+        document.getElementById('display').value += Math.PI;
+    }
+
+    function e() {
+        document.getElementById('display').value += Math.E;
+    }
+</script>
+</body>
+</html>
